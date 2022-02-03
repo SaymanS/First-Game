@@ -7,14 +7,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     float _characterSpeed = 10;
 
-    [SerializeField]
-    BoxCollider _colider;
-
     private void Awake()
     {
-        //_colider = GetComponent<BoxCollider>();
-
-        TryGetComponent<BoxCollider>(out _colider);
+        
     }
 
     // Start is called before the first frame update
@@ -26,5 +21,6 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Time.deltaTime * _characterSpeed);
     }
 }
